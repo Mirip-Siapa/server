@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const salt = bcrypt.genSaltSync(process.env.SALT_BCRYPT);
+const salt = bcrypt.genSaltSync(Number(process.env.SALT_BCRYPT));
 
 function hash(password){
   return bcrypt.hashSync(password, salt)

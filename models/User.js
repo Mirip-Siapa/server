@@ -11,13 +11,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, 'Password is empty']
-  },
-  image_id: [{ 
-    type: Schema.Types.ObjectId, 
-    ref: 'Image',
-    required: [true, 'Image is empty']
-  }]
-})
+  }
+}, { timestamps: true })
 
 userSchema.plugin(uniqueValidator, { message: '{PATH} already registered' });
 

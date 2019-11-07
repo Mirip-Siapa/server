@@ -11,8 +11,11 @@ const imageSchema = new Schema({
   },
   value: {
     type: String
+  }, 
+  url:{
+    type:String
   } 
-})
+}, {timestamps: true})
 
 const Image = mongoose.model('Image', imageSchema)
 

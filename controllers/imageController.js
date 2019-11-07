@@ -3,11 +3,21 @@ const axios = require('axios')
 const clarifaiAPI = require('../apis/clarifaiAPI')
 
 class ImageController{
-  static search(req, res, next){
-    const {search} = req.params
-    Image.find({name: search})
-      .then(images=>{
-        res.status(200).json(images)
+  // static search(req, res, next){
+  //   const {search} = req.params
+  //   Image.find({name: search})
+  //     .then(images=>{
+  //       res.status(200).json(images)
+  
+  static uploadImage(req, res, next){
+    const url = req.file.cloudStoragePublicUrl
+  }
+
+  static getAllImage(req, res, next){
+    const userId = req.loggedUser.id
+    Image.findById(id)
+      .then( data => {
+        res.status(200).json(data)
       })
       .catch(next)
   }

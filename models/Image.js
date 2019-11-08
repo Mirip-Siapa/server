@@ -2,10 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const imageSchema = new Schema({
-  user_id: { 
-    type: Schema.Types.ObjectId, 
-    ref: 'User'
-  },
+  
   name: {
     type: String
   },
@@ -14,6 +11,10 @@ const imageSchema = new Schema({
   }, 
   url:{
     type:String
+  },
+  user_id: { 
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
   } 
 }, {timestamps: true})
 

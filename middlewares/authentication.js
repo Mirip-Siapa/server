@@ -10,22 +10,25 @@ function authentication(req, res, next){
     next()
   }
   catch{
-    res.status(401).json({msg: 'login needed'})
+    res.status(401).json({ msg: 'login needed' })
   }
 }
 
 function authorization(req, res, next){
   const _id = req.params.id
-  Image.findOne({_id})
-    .then(image=>{
-      if(image.user_id == _id){
-        next()
-      }
-      else{
-        res.status(403).json('Not Authorized')
+  const user_id = req.loggedUser.id
+  Image.findOne({ _id, user_id })
+    .then(data => {
+      if (data) {
+        next ()
+      } else {
+        next({
+          status: 403,
+          message: `Not Your Account`
+        })
       }
     })
-    .then(next)
+    .catch(next)
 }
 
 module.exports = {

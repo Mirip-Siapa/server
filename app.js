@@ -11,7 +11,7 @@ const router = require('./routes')
 const app = express()
 const port = process.env.PORT || 3000
 
-mongoose.connect(process.env.MONGOOSE_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGOOSE_URI, {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true})
   .then(_=>{
     console.log('db connected')
   })
@@ -31,3 +31,4 @@ app.use('/', router)
 app.listen(port, _=>{
   console.log('listening on port', port)
 })
+
